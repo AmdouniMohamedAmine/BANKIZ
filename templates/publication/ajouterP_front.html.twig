@@ -1,0 +1,54 @@
+{% extends 'base_front_connecte.html.twig' %}
+
+{% block title %}Bankiz - Créé Article{% endblock %}
+
+{% block carousel %}
+    <!-- Quote Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container text-center">
+    <div class="col-lg-6">
+    <h1 class="display-5 mb-4">-Ajouter une publication-</h1>
+    <p class="mb-4 pb-2">Exprimez-vous en publiant des publications</p>
+            {{ form_start(formAjouterPF, {'attr':{'novalidate':'novalidate'}}) }}
+        </td>
+        <td><div class="pb-lg-2 pe-lg-0">
+                    {{ form_row(formAjouterPF.Titre_publication, { 'attr':{'placeholder': 'Titre de votre article'}}) }}
+        </div>
+        </td>
+         <td style="color:red;">
+                    {{ form_errors(formAjouterPF.Titre_publication) }}
+         </td>
+            <td>
+            <td><div class="pb-lg-2 pe-lg-0">
+                    {{ form_row(formAjouterPF.Description_publication, { 'attr':{'placeholder': 'Description de votre article'}}) }}
+                </div>
+            </td>
+            <td style="color:red;">
+                {{ form_errors(formAjouterPF.Description_publication) }}
+            </td>
+            <td>
+            <td><div class="pb-lg-2 pe-lg-0">
+                    {{ form_row(formAjouterPF.categorie_publication, { 'attr':{'placeholder': 'Categorie de votre article'}}) }}
+                </div>
+            </td>
+            <td style="color:red;">
+                {{ form_errors(formAjouterPF.categorie_publication) }}
+            </td>
+            <td>
+            <td><div class="pb-lg-2 pe-lg-0">
+                    {{ form_row(formAjouterPF.image_publication, { 'attr':{'placeholder': 'Choisir une image'}}) }}
+                </div>
+            </td>
+            <td style="color:red;">
+                {{ form_errors(formAjouterPF.image_publication) }}
+            </td>
+        <input class="btn btn-primary py-3 px-5" type="submit" style="background-color: #ffc650; border-color: #ffc650;" value="Ajouter/ Modifier publication" formnovalidate>
+
+                        {{ form_end(formAjouterPF) }}
+
+    </div>
+    </div>
+    </div>
+    <!-- Quote End -->
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Bankiz - ajouter publication{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un article</h1>
+
+    {{ form_start(formAjouterP, {'attr':{'novalidate':'novalidate'}}) }}
+
+    {{ form_row(formAjouterP.Titre_publication, {'label':'Titre', 'attr':{'placeholder': 'Titre de votre article'}}) }}
+    {{ form_row(formAjouterP.Description_publication, {'label':'Description', 'attr':{'placeholder': 'Description de votre article'}}) }}
+    {{ form_row(formAjouterP.categorie_publication, {'label':'Categorie', 'attr':{'placeholder': 'exemple : Crypo/ Devises'}}) }}
+    {{ form_row(formAjouterP.image_publication, {'label':'Image', 'attr':{'placeholder': 'Choisir une image'}}) }}
+
+    <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Ajouter</button>
+
+    {{ form_end(formAjouterP) }}
+{% endblock %}

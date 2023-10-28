@@ -1,0 +1,36 @@
+{% extends 'base_back.html.twig'%}
+
+{% block body %}
+<h1>Liste des  carte</h1>
+
+</form>
+<table border="1">
+    <tr>
+    <th>id </th>
+    <th>idclient </th>
+    <th>date_ex</th>
+    <th>mp</th>
+    <th>login</th>
+    <th>num_carte</th>
+    <th>Supprimer</th>
+    <th>Modifier</th>
+    </tr>
+    <tr {% for c in carte %}>
+        <td>{{ c.id }}</td>
+        <td>{{ c.idclient }}</td>
+        <td>{{ c.dateex | date('d-m-Y') }}</td>
+      
+        <td>{{ c.mp }}</td>
+        <td>{{ c.login }}</td>
+         <td>{{ c.numcarte }}</td>
+
+
+    <td><a href="{{ path("supprimerCarte",{'id':c.id}) }}">Supprimer</a></td>
+
+<td><a href="{{ path("modifierCarte",{'id':c.id}) }}">Modifier</a></td>
+       
+    </tr {% endfor %}>
+</table>
+<form method="post" action="{{ path('ajouterCarte') }}" >
+<button style="background-color: green;">Ajouter un carte</button>
+            {% endblock %}

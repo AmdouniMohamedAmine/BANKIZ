@@ -1,0 +1,17 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Bankiz - ajouter commentaire{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formAjouterC, {'attr':{'novalidate':'novalidate'}}) }}
+
+    {{ form_row(formAjouterC.id_publication, {'label':'Titre de la publication', 'attr':{'placeholder': 'Titre de la publication'}}) }}
+    {{ form_row(formAjouterC.nom_client, {'label':'Nom de client', 'attr':{'placeholder': 'nom de client'}}) }}
+    {{ form_row(formAjouterC.description_commentaire, {'label':'Description', 'attr':{'placeholder': 'Description de votre commentaire'}}) }}
+
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+
+    {{ form_end(formAjouterC) }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base_back.html.twig'%}
+
+{% block body %}
+<h1>Liste des categorie carte</h1>
+
+</form>
+<table border="1">
+    <tr>
+    <th>id</th>
+    <th>type</th>
+    <th>description</th>
+    <th>prix</th>
+    <th>montantmax</th>
+   
+    <th>Supprimer</th>
+    <th>Modifier</th>
+    </tr>
+    <tr {% for c in categorieCarte %}>
+        <td>{{ c.id }}</td>
+        <td>{{ c.type }}</td>
+        <td>{{ c.description }}</td>
+        <td>{{ c.prix }}</td>
+        <td>{{ c.montantmax}}</td>
+        
+        
+                <td><a href="{{ path("supprimerCategorieCarte",{'id':c.id}) }}">Supprimer</a></td>
+
+<td><a href="{{ path("modifierCategorieCarte",{'id':c.id}) }}">Modifier</a></td>
+    
+       
+    </tr {% endfor %}>
+</table>
+<form method="post" action="{{ path('ajouterCategorieCarte') }}" >
+<button style="background-color: green;">Ajouter un categorie</button>
+            {% endblock %}

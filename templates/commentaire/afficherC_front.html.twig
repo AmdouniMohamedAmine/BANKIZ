@@ -1,0 +1,44 @@
+<section>
+    <center>
+            <h1>Liste des commentaires</h1>
+    </center>
+    {% for c in commentaires %}
+    <div class="container mb-2">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+                <div class="card card-row shadow-light-lg">
+                    <div class="row gx-0">
+                        <!-- Body-->
+                        <div class="card-body">
+                            <blockquote class="mb-0 text-center">
+                                <!--footer-->
+                                <footer class="blockquote-footer">
+                                    <span class="h6 text-uppercase">
+                                        Par {{ c.getNomClient }} le {{ c.getDateCommentaire | date('d-m-Y') }}
+                                    </span>
+                                </footer>
+                                    <!--Text-->
+                                    <p>
+                                        {{ c.getDescriptionCommentaire()}}
+                                    </p>
+
+                                <button type="button" data-reply data-id='{{ c.getId() }}' class="btn btn-primary" style="background-color: #ffc650; border-color: #ffc650;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Repondre</button>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% block javascripts %}
+        <script>
+            document.querySelectorAll('[data-reply]').forEach(element => {
+                element.addEventListener('click', function () {
+                  //document.querySelector('#comment_parentid').value = this.dataset.id;
+                  document.querySelector('comment_parentid').value = this.dataset.id;
+                });
+            });
+        </script>
+    {% endblock %}
+</section>

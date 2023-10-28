@@ -1,0 +1,67 @@
+{% extends 'base_front_connecte.html.twig' %}
+
+{% block title %}Bankiz - Cheque{% endblock %}
+
+{% block carousel %}
+    <h1>Demande d'un chéquier</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center breadcrumbs_inner">
+                <h4><i class="fa fa-angle-right"></i> Ajouter un chéque</h4>
+                {{form_start(form,{'attr':{'class':'m-form m-form--fit m-form--label-align-right','novalidate' : 'novalidate'}})}}
+                <div class="m-portlet__body">
+
+
+
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.motif_chequier, 'Motif', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                        <div class="col-10" {{ form_errors(form.motif_chequier) }}>
+                            <p style="color: red;">{{ form_widget(form.motif_chequier, {'attr': {'class': 'form-control m-input'}}) }} </p>
+
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.date_creation, 'Date de creation', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+
+                        <div class="col-10">
+                            {{ form_widget(form.date_creation, {'attr': {'class': 'form-control m-input'}}) }}
+                            {{ form_errors(form.date_creation) }}
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group m-form__group row">
+                        <div>
+                            <button type="submit" class="btn" style="background-color: #1c294e ; color: white">
+                                Ajouter
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                    {{ form_end(form) }}
+                </div>
+                <!-- /content-panel -->
+            </div>
+            <!-- /col-md-12 -->
+        </div></div></div>
+{% endblock %}
+{#  {% block body %}
+<div class=""container-xxl py-5 wow fadeInUp" data-wow-delay="8.1s>
+<div class=""container text-center">
+<div class=""col-lg-6">
+{{ form_start(form ,{'attr':{'novalidate':'novalidate'}}) }}
+<h4>{{  form_label(form.chequier , "chequier :") }}</h4>
+{{  form_widget(form.chequier) }}
+{{  form_errors(form.chequier) }}
+    </div>
+    </div>
+    </div>
+{% endblock %} #}
+

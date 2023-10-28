@@ -1,0 +1,78 @@
+{% extends 'base_front_connecte.html.twig' %}
+
+{% block title %}Bankiz - Cheque{% endblock %}
+
+{% block carousel %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center breadcrumbs_inner">
+                <h4><i class="fa fa-angle-right"></i> Modifier un chéque</h4>
+                {{form_start(form,{'attr':{'class':'m-form m-form--fit m-form--label-align-right','novalidate' : 'novalidate'}})}}
+                <div class="m-portlet__body">
+
+
+
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.montant, 'Montant', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                        <div class="col-10" {{ form_errors(form.montant) }}>
+                            {{ form_widget(form.montant, {'attr': {'class': 'form-control m-input'}}) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.date_cheque, 'Date chéque', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+
+                        <div class="col-10">
+                            {{ form_widget(form.date_cheque, {'attr': {'class': 'form-control m-input'}}) }}
+                            {{ form_errors(form.date_cheque) }}
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.lieu, 'Lieu', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                        <div class="col-10">
+                            {{ form_widget(form.lieu, {'attr': {'class': 'form-control m-input'}}) }}
+                            {{ form_errors(form.lieu) }}
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.signature, 'Signature', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                        <div class="col-10">
+                            {{ form_widget(form.signature, {'attr': {'class': 'form-control m-input'}}) }}
+                            {{ form_errors(form.signature) }}
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+
+                        {{ form_label(form.destinataire, 'Destinataire', {'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                        <div class="col-10">
+                            {{ form_widget(form.destinataire, {'attr': {'class': 'form-control m-input'}}) }}
+                            {{ form_errors(form.destinataire) }}
+                        </div>
+                    </div>
+
+                    <div></div>
+                    <div class="form-group m-form__group row">
+                        <div>
+                            <button type="submit" class="btn" style="background-color: #1c294e ; color: white">
+                                Modifier
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                    {{ form_end(form) }}
+                </div>
+                <!-- /content-panel -->
+            </div>
+            <!-- /col-md-12 -->
+        </div></div></div>
+
+{% endblock %}

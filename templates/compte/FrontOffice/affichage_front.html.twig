@@ -1,0 +1,197 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block title %}Bankiz - Mon Compte{% endblock %}
+
+{% block carousel %}
+
+    <div style="background-color: #032a5f;">
+        <div class="container d-flex justify-content-center">
+
+            <h2 style="height: 30px;"></h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div id="content" class="py-4" style="background-color: #f5f5f5">
+        <div class="container">
+            <div class="row">
+                <!-- Left Panel
+                ============================================= -->
+                <aside class="col-lg-3">
+
+                    <!-- Available Balance
+                    =============================== -->
+                    {#                    <div style="height: 10px"></div>#}
+                    <div class="bg-white  rounded text-center p-3 mb-4">
+                        <div class="text-17 text-light my-3"><i class="fas fa-wallet"
+                                                                style="font-size: 80px; color: #ffc650"></i></div>
+                        <h3 class="text-9 fw-400">{{ comptes.soldecompte }} DT</h3>
+                        <p class="mb-2 text-muted opacity-8">Solde Actuel</p>
+                        <hr class="mx-n3">
+                        <div class="d-flex">
+                            <a href="" class="btn-link me-auto"
+                               style="border: 2px solid #ffc650; padding: 5px; background-color: #ffc650; color: white">Transaction</a>
+                            <a href="" class="btn-link ms-auto"
+                               style="border: 2px solid #032a5f; padding: 5px; background-color: #032a5f; color: white"
+                               data-bs-toggle="modal" data-bs-target="#compte-detail">Informations</a></div>
+                    </div>
+                    <!-- Available Balance End -->
+                    <div class="bg-white  rounded text-center p-3 mb-4">
+                        {% if qrCode %}
+                            <img src="{{ qrCode }}" alt="qr-code">
+                        {% endif %}
+                        <p align="center">Scannez ce QR code pour faciliter les transactions</p>
+                    </div>
+                    <div align="center">
+                        <a href="{{ path('desactiver_compte_front',{'id':comptes.id}) }} }}"
+                           class="btn btn-primary py-md-3 px-md-5 me-3 "
+                           style="background-color: #ffc650; border-color: #ffc650; margin-bottom: 20px;">
+                            Désactiver mon compte</a>
+                        <a href="{{ path('releve_compte', {'id':app.user.id} ) }}"
+                           class="btn btn-primary py-md-3 px-md-5 me-3 "
+                           style="background-color: #032a5f; border-color: #032a5f;">
+                            Relevé de compte</a>
+                    </div>
+
+                </aside>
+                <!-- Left Panel End -->
+
+                <!-- Middle Panel
+                ============================================= -->
+                <div class="col-lg-9">
+
+                    {#                    <!-- Profile Completeness#}
+                    {#                    =============================== -->#}
+                    {#                    <div class="bg-white shadow-sm rounded p-4 mb-4">#}
+                    {#                        <h3 class="text-5 fw-400 d-flex align-items-center mb-4">Profile Completeness<span#}
+                    {#                                    class="border text-success rounded-pill fw-500 text-2 px-3 py-1 ms-2">50%</span>#}
+                    {#                        </h3>#}
+                    {#                        <hr class="mb-4 mx-n4">#}
+                    {#                        <div class="row gy-4 profile-completeness">#}
+                    {#                            <div class="col-sm-6 col-md-3">#}
+                    {#                                <div class="border rounded text-center px-3 py-4"><span#}
+                    {#                                            class="d-block text-10 text-light mt-2 mb-3"><i#}
+                    {#                                                class="fas fa-mobile-alt"></i></span> <span#}
+                    {#                                            class="text-5 d-block text-success mt-4 mb-3"><i#}
+                    {#                                                class="fas fa-check-circle"></i></span>#}
+                    {#                                    <p class="mb-0">Mobile Added</p>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <div class="col-sm-6 col-md-3">#}
+                    {#                                <div class="border rounded text-center px-3 py-4"><span#}
+                    {#                                            class="d-block text-10 text-light mt-2 mb-3"><i class="fas fa-envelope"></i></span>#}
+                    {#                                    <span class="text-5 d-block text-success mt-4 mb-3"><i#}
+                    {#                                                class="fas fa-check-circle"></i></span>#}
+                    {#                                    <p class="mb-0">Email Added</p>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <div class="col-sm-6 col-md-3">#}
+                    {#                                <div class="position-relative border rounded text-center px-3 py-4"><span#}
+                    {#                                            class="d-block text-10 text-light mt-2 mb-3"><i#}
+                    {#                                                class="fas fa-credit-card"></i></span> <span#}
+                    {#                                            class="text-5 d-block text-light mt-4 mb-3"><i#}
+                    {#                                                class="far fa-circle "></i></span>#}
+                    {#                                    <p class="mb-0"><a class="btn-link stretched-link" href="">Add Card</a></p>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <div class="col-sm-6 col-md-3">#}
+                    {#                                <div class="position-relative border rounded text-center px-3 py-4"><span#}
+                    {#                                            class="d-block text-10 text-light mt-2 mb-3"><i#}
+                    {#                                                class="fas fa-university"></i></span> <span#}
+                    {#                                            class="text-5 d-block text-light mt-4 mb-3"><i#}
+                    {#                                                class="far fa-circle "></i></span>#}
+                    {#                                    <p class="mb-0"><a class="btn-link stretched-link" href="">Add Bank Account</a></p>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <!-- Profile Completeness End -->#}
+                    {% include 'transaction/FrontOffice/afficherMesTransactions.html.twig' %}
+
+
+                    <!-- Compte Item Details Modal
+                    =========================================== -->
+                    {% set taux = comptes.tauxinteret * 100 %}
+                    <div id="compte-detail" class="modal fade" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered compte-details" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h5 class="text-5 fw-400 m-3">Détails sur votre compte
+                                        <button type="button" class="btn-close text-2 float-end"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </h5>
+                                    <hr>
+                                    <div class="px-3">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2" style="font-weight: bold">RIB du Compte  <span
+                                                        class="float-end text-3"
+                                                        style="font-weight: normal">{{ comptes.ribcompte }}</span>
+                                            </li>
+                                            <li class="mb-2" style="font-weight: bold">Numéro du Compte <span
+                                                        class="float-end text-3"
+                                                        style="font-weight: normal">{{ comptes.numcompte }}</span>
+                                            </li>
+                                            <li class="mb-2" style="font-weight: bold">Type du Compte <span
+                                                        class="float-end text-3"
+                                                        style="font-weight: normal">{{ comptes.typecompte }}</span>
+                                            </li>
+                                            <li class="mb-2" style="font-weight: bold">Taux d'intérêt <span
+                                                        class="float-end text-3"
+                                                        style="font-weight: normal">{{ taux }} % </span></li>
+                                            {% if comptes.etatcompte == 0 %}
+                                            <li class="mb-2" style="font-weight: bold">Etat du Compte <span
+                                                        class="float-end text-3">En cours d'activation<span
+                                                            class="text-success text-3 ms-1"><i
+                                                                class="fas fa-ellipsis-h"></i></span></span>
+
+                                                {% elseif comptes.etatcompte == 1 %}
+                                            <li class="mb-2" style="font-weight: bold">Etat du Compte <span
+                                                        class="float-end text-3">Activé<span
+                                                            class="text-success text-3 ms-1"><i
+                                                                class="fas fa-check-circle"></i></span></span>
+
+                                                {% elseif comptes.etatcompte == 2 %}
+                                            <li class="mb-2" style="font-weight: bold">Etat du Compte <span
+                                                        class="float-end text-3">Désactivé<span
+                                                            class="text-success text-3 ms-1"><i
+                                                                class="fas fa-times-circle"></i></span></span>
+
+
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                        <hr class="mb-4 mt-2">
+
+                                        <div class="container">
+                                            <div class="copyright">
+                                                <div class="row" align="center">
+                                                    <div class="px-3">
+                                                        &copy; Bankiz, All Rights Reserved.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Compte Item Details Modal End -->
+
+                    <!-- View all Link
+                    =============================== -->
+{#                    <div class="text-center mt-4"><a href="transactions.html" class="btn-link text-3">View all<i#}
+{#                                    class="fas fa-chevron-right text-2 ms-2"></i></a></div>#}
+                    <!-- View all Link End -->
+
+                </div>
+                <!-- Recent Activity End -->
+            </div>
+            <!-- Middle Panel End -->
+        </div>
+    </div>
+    </div>
+    <!-- Content end -->
+
+    </div>
+{% endblock %}

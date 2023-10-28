@@ -1,0 +1,34 @@
+{% extends 'base_back.html.twig' %}
+
+
+{% block body %}
+  {{ form(f,{'attr':{'novalidate':'novalidate'}}) }}
+    <tr>
+        <th class="m-0 font-weight-bold text-dark">{{ form_label(f.type, "type") }}
+        </th>
+        <th>{{ form_widget(f.type) }}</th>
+        <td style="color: red;"> {{ form_errors(f.type) }}</td>
+    </tr>
+    <tr>
+        <th class="m-0 font-weight-bold text-dark">{{ form_label(f.description, "description") }}</th>
+        <th>{{ form_widget(f.description) }}</th>
+        <td style="color: red;"> {{ form_errors(f.description) }}</td>
+    </tr>
+    <tr>
+        <th class="m-0 font-weight-bold text-dark">{{ form_label(f.prix, "prix") }}</th>
+        <th>{{ form_widget(f.prix) }}</th>
+        <td style="color: red;"> {{ form_errors(f.prix)}}</td>
+    </tr>
+    <tr>
+        <th class="m-0 font-weight-bold text-dark">{{ form_label(f.montant_max, "montant_max") }}</th>
+        <th>{{ form_widget(f.montant_max) }}</th>
+        <td style="color: red;"> {{ form_errors(f.montant_max) }}</td>
+
+    </tr>
+    
+   
+    </table>
+    </tr>
+    <br>
+   
+{% endblock %}

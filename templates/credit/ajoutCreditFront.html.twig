@@ -1,0 +1,76 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block carousel %}
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">crédit bancaire</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="accueil">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+<div class="container-fluid bg-light p-0">
+
+    <div class="container-xxl py-5">
+        <table>
+        <div class="container">
+            {{ form_start(for,{'attr':{'novalidate':'novalidate'}}) }}
+
+
+
+
+                <tr class="form-control"  >
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.montCredit, "montCredit") }}</th>
+                    <th>{{ form_widget(for.montCredit) }}</th>
+                    <td  style="color: red;"> {{ form_errors(for.montCredit) }} </td>
+                            <tr class="form-control">
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.datepe, " datepe") }}</th>
+                    <th>{{ form_widget(for.datepe) }}</th>
+                    <td style="color: red;"> {{ form_errors(for.datepe) }}</td>
+                </tr>
+
+                <tr class="form-control">
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.datede, "datede") }}</th>
+                    <th>{{ form_widget(for.datede) }}</th>
+                    <td style="color: red;"> {{ form_errors(for.datede) }}</td>
+                </tr>
+                <tr class="form-control">
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.dureeC, "dureeC") }}</th>
+                    <th>{{ form_widget(for.dureeC) }}</th>
+                    <td style="color: red;"> {{ form_errors(for.dureeC) }}</td>
+                </tr>
+                <tr class="form-control">
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.echeance, "echeance") }}</th>
+                    <th>{{ form_widget(for.echeance) }}</th>
+                    <td style="color: red;"> {{ form_errors(for.echeance) }}</td>
+                </tr>
+
+                <tr class="form-control">
+                    <th class="m-0 font-weight-bold text-dark">{{ form_label(for.typeCredit, "typeCredit : ") }}</th>
+                    <th>{{ form_widget(for.typeCredit) }}</th>
+                    <td style="color: red;"> {{ form_errors(for.typeCredit) }}</td>
+                </tr> <tr class="form-control">
+                <th class="m-0 font-weight-bold text-dark">{{ form_label(for.numerocompte, "numerocompte : ") }}</th>
+                <th>{{ form_widget(for.numerocompte) }}</th>
+                <td style="color: red;"> {{ form_errors(for.numerocompte) }}</td>
+            </tr>
+
+
+
+
+
+
+            </table>
+            </tr>
+            <br>
+            {{ form_end(for) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

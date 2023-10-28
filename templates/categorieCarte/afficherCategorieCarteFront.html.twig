@@ -1,0 +1,31 @@
+{% extends 'base_front_connecte.html.twig' %}
+
+{% block carousel%}
+{% endblock %}
+{% block body %}
+<h1>Liste des categorie carte</h1>
+
+</form>
+<table border="1">
+    <tr>
+    <th>type</th>
+    <th>description</th>
+    <th>prix</th>
+    <th>montantmax</th>
+
+   
+    
+    </tr>
+    <tr {% for c in categorieCarte %}>
+        <td>{{ c.type }}</td>
+        <td>{{ c.description }}</td>
+        <td>{{ c.prix }}</td>
+        <td>{{ c.montantmax}}</td>
+        
+               
+    
+       
+    </tr {% endfor %}>
+</table>
+
+            {% endblock %}

@@ -1,0 +1,255 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Bankiz - Comptes Bancaires{% endblock %}
+    {% block navbar %}
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('dashboard_back') }}" style="background-color: white;">
+                <div class="sidebar-brand-icon">
+                    <img src="{{ asset ('BackOffice/img/Bankiz/logo-Final.png') }}" alt="Bankiz" width="100">
+                </div>
+                <!-- <div class="sidebar-brand-text mx-3">Bankiz</div> -->
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_back') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('back_utilisateur') }}">
+                    <i class='fas fa-user-alt' style='font-size:17px'></i>
+                    <span>Utilisateurs</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('back_reclamation') }}">
+                    <i class="fa fa-newspaper-o" style="font-size:17px"></i>
+                    <span>Réclamations</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            {#            <li class="nav-item">#}
+            {#                <a class="nav-link" href="{{ path('blank_page_back') }}">#}
+            {#                    <i class='fas fa-file-signature' style='font-size:17px'></i>#}
+            {#                    <span>Assurances</span></a>#}
+            {#            </li>#}
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Emprunts</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="{{ path('affichCredit') }}">Crédits</a>
+                        <a class="collapse-item" href="{{ path('affichOperationCredit') }} ">Opérations crédit</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('afficherCarte') }}">
+                    <i class='far fa-credit-card' style='font-size:17px'></i>
+                    <span>Cartes</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('afficherCategorieCarte') }}">
+                    <i class='far fa-credit-card' style='font-size:17px'></i>
+                    <span>Categorie</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('afficherchequierb') }}">
+                    <i class='fas fa-money-check-alt' style='font-size:17px;'></i>
+                    <span>Chèques & Chéquiers</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('comptes') }}">
+                    <i class='fas fa-piggy-bank' style='font-size:17px;'></i>
+                    <span>Comptes Bancaires</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('transactions') }}">
+                    <i class='fas fa-coins' style='font-size:17px;'></i>
+                    <span>Transactions</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('afficherP_back') }}">
+                    <i class='fab fa-rocketchat' style='font-size:17px'></i>
+                    <span>Publications</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('afficherC_back') }}">
+                    <i class='fab fa-rocketchat' style='font-size:17px'></i>
+                    <span>Commentaires</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+        </ul>
+    {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Comptes Bancaires</h1>
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Gestion des comptes bancaires</h6>
+            </div>
+            <div class="card-body">
+                <table>
+                    <td style="  vertical-align:top ; ">
+                        <table style="margin-right: 20px ; ">
+                            <tr>
+                                {# <th> #}
+                                {# <select value="sortselect" name="sortselect" class="input_back" #}
+                                {# style="width: 125px;"> #}
+                                {# <option value="tri_num">Numéro de compte</option> #}
+                                {# <option value="tri_nom">Nom client</option> #}
+                                {# <option value="tri_date">Date de création</option> #}
+                                {# <option value="tri_etat">Etat compte</option> #}
+                                {# </select> #}
+                                <th>Trier par :</th>
+                                <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                       style="height: 35px; padding: 6px 15px; " href="{{ path('tri_nom_client') }}">Nom
+                                        Client</a></th>
+                                <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                       style="height: 35px; padding: 6px 15px; " href="{{ path('tri_date') }}">Date de
+                                        création</a></th>
+                                <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                       style="height: 35px; padding: 6px 15px; " href="{{ path('tri_etat') }}">Etat
+                                        Compte</a></th>
+                            </tr>
+
+                            <tr>
+                                {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+                                <table>
+                                    <tr>
+                                        <td>{{ form_widget(form.fullname_client) }}</td>
+                                        <td style="color: red;"> {{ form_errors(form.fullname_client) }}</td>
+                                    </tr>
+                                </table>
+                                {{ form_end(form) }}
+
+                            </tr>
+                        </table>
+                    </td>
+                    <table style="margin-right: 20px ; ">
+
+
+                    </table>
+                    <hr>
+                    </tr>
+                    <td>
+                        <table style="vertical-align:top ; ">
+                            <br>
+                            <tr>
+                                <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                       style="height: 45px; padding: 10px 15px; " href="{{ path('ajouter_compte') }}">Ajouter
+                                        un compte</a></th>
+                                {#                                <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"#}
+                                {#                                       style="height: 45px; padding: 10px 15px; " href="">Rechercher un compte</a></th>#}
+                            </tr>
+                        </table>
+                    </td>
+                    <hr>
+                    <td>
+                        <div style="width: 100%; height: 500px; overflow: auto">
+
+                            <table style="border:1px solid black;border-collapse:collapse; vertical-align:center; ">
+                                <tr class="table" style="border:1px solid black;border-collapse:collapse;">
+                                    <td class="table">Num Compte</td>
+                                    <td class="table">RIB Compte</td>
+                                    <td class="table">Nom Client</td>
+                                    <td class="table">Type Compte</td>
+                                    <td class="table">Solde Compte</td>
+                                    <td class="table">Seuil Compte</td>
+                                    <td class="table">Taux Intérêt</td>
+                                    <td class="table">Date création</td>
+                                    <td class="table">Etat Compte</td>
+                                </tr>
+                                {% for cmpt in comptes %}
+                                <tr style="border:1px solid black;border-collapse:collapse; vertical-align:center; text-align:center;">
+                                    <td>{{ cmpt.numcompte }}</td>
+                                    <td>{{ cmpt.ribcompte }}</td>
+                                    <td>{{ cmpt.fullnameclient.nomu }}{{ ' ' }}{{ cmpt.fullnameclient.prenomu }}</td>
+                                    <td>{{ cmpt.typecompte }}</td>
+                                    <td>{{ cmpt.soldecompte }}</td>
+                                    <td>{{ cmpt.seuilcompte }}</td>
+                                    <td>{{ cmpt.tauxinteret }}</td>
+                                    <td>{{ cmpt.datecreation |date('d-m-Y') }}</td>
+                                    {% if cmpt.etatcompte == 0 %}
+                                        <td>En cours d'activation
+                                            <form action="{{ path('activer_compte_back',{'id':cmpt.id}) }}">
+                                                <button style="border-color: #032a5f; background-color: #032a5f; color: white">
+                                                    Activer
+                                                </button>
+                                            </form>
+                                        </td>
+                                    {% elseif cmpt.etatcompte == 1 %}
+                                        <td>Activé
+                                            <form action="{{ path('desactiver_compte_back',{'id':cmpt.id}) }}">
+                                                <button style="border-color: #032a5f; background-color: #032a5f; color: white">
+                                                    Désactiver
+                                                </button>
+                                        </td>
+                                    {% elseif cmpt.etatcompte == 2 %}
+                                        <td>Désactivé
+                                            <form action="{{ path('activer_compte_back',{'id':cmpt.id}) }}">
+                                                <button style="border-color: #032a5f; background-color: #032a5f; color: white">
+                                                    Activer
+                                                </button>
+                                            </form>
+                                        </td>
+                                    {% endif %}
+
+
+                                    <td>
+                                        <form action="{{ path('modifier_compte',{'id':cmpt.id}) }}">
+                                            <button style="border-color: #ffc650; background-color: #ffc650"><i
+                                                        class='fas fa-edit' style='font-size:18px'></i></button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{ path('supprimerCompte',{'id':cmpt.id}) }}">
+                                            <button style="border-color: red; background-color: red"><i
+                                                        class='fas fa-trash' style='font-size:18px; color: white'></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{ path('releve_compte', {'id':cmpt.fullnameclient.id} ) }}">
+                                            <button style="border-color: #032a5f; background-color: #032a5f"><i
+                                                        class='fas fa-file-invoice'
+                                                        style='font-size:18px; color:white'></i></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

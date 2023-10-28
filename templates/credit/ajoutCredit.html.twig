@@ -1,0 +1,14 @@
+{% extends 'base_back.html.twig' %}
+{% block body %}
+    <div class="container-fluid bg-light p-0">
+
+    <div class="container-xxl py-5">
+
+    <div class="container">
+<h1>Ajouter un crédit</h1>
+{{ form(f,{'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_end(f) }}
+    </div>
+    </div>
+    </div>
+{% endblock %}

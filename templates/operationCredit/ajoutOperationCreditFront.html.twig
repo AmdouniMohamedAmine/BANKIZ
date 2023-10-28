@@ -1,0 +1,82 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block carousel %}
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Effectuer une Operation crédit bancaire</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="accueil">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <div class="container-fluid bg-light p-0">
+
+    <div class="container-xxl py-5">
+
+        <div class="container">
+
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <table>
+
+{#        <tr>#}
+{#            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.id, "RIB id") }}#}
+{#            </th>#}
+{#            <th>{{ form_widget(form.id) }}</th>#}
+{#            <td style="color: red;"> {{ form_errors(form.id) }}</td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.id_operation, "Nom id_operation") }}</th>#}
+{#            <th>{{ form_widget(form.id_operation) }}</th>#}
+{#            <td style="color: red;"> {{ form_errors(form.id_operation) }}</td>#}
+{#        </tr>#}
+
+        <tr class="form-control"  >
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.montPayer, "montant : ") }}</th>
+            <th>{{ form_widget(form.montPayer) }}</th>
+            <td  style="color: red;> {{ form_errors(form.montPayer) }}</td>
+        </tr>
+
+        <tr class="form-control">
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.dateOp, " date_operation : ") }}</th>
+            <th>{{ form_widget(form.dateOp) }}</th>
+            <td style="color: red;"> {{ form_errors(form.dateOp) }}</td>
+        </tr>
+
+        <tr class="form-control">
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.typeOperation, "typeOperation : ") }}</th>
+            <th>{{ form_widget(form.typeOperation) }}</th>
+            <td style="color: red;"> {{ form_errors(form.typeOperation) }}</td>
+        </tr>
+        <tr class="form-control">
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.tauxInteret, "Taux d'interet : ") }}</th>
+            <th>{{ form_widget(form.tauxInteret) }}</th>
+            <td style="color: red;"> {{ form_errors(form.tauxInteret) }}</td>
+        </tr>
+        <tr class="form-control">
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.echeance, "echeance ") }}</th>
+            <th>{{ form_widget(form.echeance) }}</th>
+            <td style="color: red;"> {{ form_errors(form.echeance) }}</td>
+        </tr>
+        <tr style="visibility:hidden ">
+            <th class="m-0 font-weight-bold text-dark">{{ form_label(form.solvabilite, "solvabilite ") }}</th>
+            <th>{{ form_widget(form.solvabilite)}}</th>
+            <td style="color: red;visibility:hidden; "> {{ form_errors(form.solvabilite) }}</td>
+        </tr>
+
+
+      
+    </table>
+    </tr>
+    <br>
+    {{ form_end(form) }}
+            </div>
+    </div>
+    </div>
+
+{% endblock %}

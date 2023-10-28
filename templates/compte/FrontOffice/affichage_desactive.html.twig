@@ -1,0 +1,33 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block title %}Bankiz - Mon Compte{% endblock %}
+
+{% block carousel %}
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Mon compte bancaire</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="accueil">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+            </div>
+            <div class="row g-4">
+                <h1>Votre compte est actuellement désactivé !</h1>
+                <p>Le solde de votre compte Bankiz est donc temporairement bloqué, jusqu'à réactivation du compte.</p>
+                <p>Afin de profiter des fonctionnalités de Bankiz, réactivez votre compte en cliquant sur le bouton ci-dessous :</p>
+                <a href="{{ path('activer_compte_front',{'id':comptes.id}) }}" class="btn btn-primary py-md-3 px-md-5 me-3 " style="background-color: #ffc650; border-color: #ffc650; margin-bottom: 20px;" >
+                    Réactiver mon compte</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

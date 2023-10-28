@@ -1,0 +1,40 @@
+{% extends 'base_back.html.twig' %}
+{% block title %}Bankiz - Publications {% endblock %}
+
+{% block body %}
+
+<h1 class="h3 mb-4 text-gray-800">-Liste des Articles par Categorie-</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Gestion des forum</h6>
+        </div>
+
+    {{ form(searchPublication) }}
+    <hr>
+    <td>
+        <div style="width: 100%; overflow: auto">
+            <table style="border:1px solid black;border-collapse:collapse; vertical-align:center; ">
+                <tr class="table" style="border:1px solid black;border-collapse:collapse;">
+                    <td>Nom Client</td>
+                    <td >Titre publication</td>
+                    <td >Description publication</td>
+                    <td >Categorie publication</td>
+                    <td>Date Publication</td>
+                    <td>Image Publication</td>
+                </tr>
+                {% for k in publications %}
+                <tr style="border:1px solid black;border-collapse:collapse; vertical-align:center; text-align:center;">
+                    <td>{{ k.getNomClient() }}</td>
+                    <td>{{ k.getTitrePublication() }}</td>
+                    <td>{{ k.getDescriptionPublication() }}</td>
+                    <td>{{ k.getCategoriePublication }}</td>
+                    <td>{{ k.getDatePublication |date('d-m-Y') }}</td>
+                    <td><img  src="{{ asset('BackOffice/img/' ~ k.getImagePublication) }}" height="70px" width="100px" ></td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </td>
+    </table>
+    </div>
+{% endblock %}

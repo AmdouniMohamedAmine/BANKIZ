@@ -1,0 +1,86 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block carousel %}
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Effectuer une transaction bancaire</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="accueil">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <div class="container-fluid bg-light p-0">
+
+        <div class="container-xxl py-5">
+
+            <div class="container">
+
+                {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+                <table>
+
+                    <tr>
+                        {# <th class="m-0 font-weight-bold text-dark">{{ form_label(form.RIB_emetteur, "RIB Emetteur") }} #}
+                        {# </th> #}
+                        {# <th>{{ form_widget(form.RIB_emetteur) }}</th> #}
+                        {# <td style="color: red;"> {{ form_errors(form.RIB_emetteur) }}</td> #}
+                        <th class="m-0 font-weight-bold text-dark">RIB Emetteur : {{ compte.ribcompte }}</th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        {# <th class="m-0 font-weight-bold text-dark">{{ form_label(form.fullname_emetteur, "Nom Emetteur") }}</th> #}
+                        {# <th>{{ form_widget(form.fullname_emetteur) }}</th> #}
+                        {# <td style="color: red;"> {{ form_errors(form.fullname_emetteur) }}</td> #}
+                        <th class="m-0 font-weight-bold text-dark">Nom Emetteur
+                            : {{ compte.fullnameclient.nomu }}{{ ' ' }}{{ compte.fullnameclient.prenomu }}</th>
+                    </tr>
+                    <tr>
+                        {# <th class="m-0 font-weight-bold text-dark">{{ form_label(form.RIB_recepteur, "RIB Récepteur") }}</th> #}
+                        {# <th>{{ form_widget(form.RIB_recepteur) }}</th> #}
+                        {# <td style="color: red;"> {{ form_errors(form.RIB_recepteur) }}</td> #}
+                        <th class="m-0 font-weight-bold text-dark">RIB Récepteur : {{ recepteur.ribcompte }}</th>
+
+                    </tr>
+                    <tr>
+                        {# <th class="m-0 font-weight-bold text-dark">{{ form_label(form.fullname_recepteur, "Nom récepteur") }}</th> #}
+                        {# <th>{{ form_widget(form.fullname_recepteur) }}</th> #}
+                        {# <td style="color: red;"> {{ form_errors(form.fullname_recepteur) }}</td> #}
+                        <th class="m-0 font-weight-bold text-dark">Nom Récepteur
+                            : {{ recepteur.fullnameclient.nomu }}{{ ' ' }}{{ recepteur.fullnameclient.prenomu }}</th>
+
+                    </tr>
+                    <tr>
+                        <th class="m-0 font-weight-bold text-dark">{{ form_label(form.montant_transaction, "Montant Transaction") }}</th>
+                        <th>{{ form_widget(form.montant_transaction) }}</th>
+                        <td style="color: red;"> {{ form_errors(form.montant_transaction) }}</td>
+                    </tr>
+                    <tr>
+                        <th class="m-0 font-weight-bold text-dark">{{ form_label(form.description_transaction, "Description Transaction") }}</th>
+                        <th>{{ form_widget(form.description_transaction) }}</th>
+                        <td style="color: red;"> {{ form_errors(form.description_transaction) }}</td>
+                    </tr>
+                    <tr>
+                        <th class="m-0 font-weight-bold text-dark">{{ form_label(form.type_transaction, "Type Transaction") }}</th>
+                        <th>{{ form_widget(form.type_transaction) }}</th>
+                        <td style="color: red;"> {{ form_errors(form.type_transaction) }}</td>
+                    </tr>
+                    {# <tr> #}
+                    {# <th class="m-0 font-weight-bold text-dark">{{ form_label(form.etat_transaction, "Etat Transaction") }}</th> #}
+                    {# <th>{{ form_widget(form.etat_transaction) }}</th> #}
+                    {# <td style="color: red;"> {{ form_errors(form.etat_transaction) }}</td> #}
+                    {# </tr> #}
+                </table>
+                </tr>
+                <br>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

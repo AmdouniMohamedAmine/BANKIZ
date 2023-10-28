@@ -1,0 +1,81 @@
+{% extends 'base_front_connecte.html.twig' %}
+{% block title %}Bankiz - Publications {% endblock %}
+{% block carousel %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            {%  for type, messages in app.flashes %}
+                {%  for message in messages %}
+                    <div  class="alert alert-{{ type }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor%}
+            {% endfor %}
+            <h1 class="display-5 mb-5">{{ formPF|length }}  Articles</h1>
+        </div>
+
+        <div class="row">
+            {% for p in formPF %}
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item">
+                    <div class="overflow-hidden" >
+                        <img class="img-fluid"  src="{{ asset('BackOffice/img/' ~ p.getImagePublication) }}"  alt=""  >
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">{{ p.getTitrePublication() }}</h4>
+                        <h6 class="metadata">Publié  le {{ p.getDatePublication | date('d-m-Y') }} à {{ p.getDatePublication | date('H:i')}} dans la categorie
+                            {{ p.getCategoriePublication }} par {{ p.getNomClient() }}</h6>
+                        <p>{{ p.getDescriptionPublication}}</p>
+                        <a class="fw-medium" href="{{ path('afficherPD_front', {id: p.getId}) }}" style="color: #ffc650;">Lire la suite<i class="fa fa-arrow-right ms-2"></i></a>
+                        <a href="{{ path('post_like', {id: p.getId}) }}" class="btn btn-link js-like">
+                            {% if app.user and  p.isLikedByUser(app.user) %}
+                                <i class="fas fa-thumbs-up"></i>
+                            {% else %}
+                                <i class="far fa-thumbs-up"></i>
+                              {% endif%}
+                            <span class="js-likes">{{ p.getLikes | length}}</span>
+                            <span class="js-label">j'aime</span>
+
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+
+        {% block  javascripts %}
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script>
+                function onClickBtnLike(event)
+                {
+                    event.preventDefault();
+
+                    const  url = this.href;
+                    const spanCount = this.querySelector('span.js-likes');
+                    const icone = this.querySelector('i');
+
+                    axios.get(url).then(function (response) {
+                        spanCount.textContent = response.data.likes;
+
+                        if(icone.classList.contains('fas')) {
+                            icone.classList.replace('fas', 'far');
+                        }
+                        else {
+                            icone.classList.replace('far', 'fas');
+                        }
+                    }).catch(function (error) {
+                        if(error.response.status === 403) {
+                            window.alert("Vous ne pouvez pas liker un article si vous n'etes pas connecte !");
+                        } else {
+                            window.alert("Une erreur s'est produite, reessayez plus tard !");
+                        }
+                    });
+                }
+
+                document.querySelectorAll('a.js-like').forEach(function (link) {
+                    link.addEventListener('click', onClickBtnLike);
+                })
+            </script>
+        {% endblock %}

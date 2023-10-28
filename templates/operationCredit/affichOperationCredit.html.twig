@@ -1,0 +1,40 @@
+{% extends 'base_back.html.twig'%}
+
+{% block body %}
+
+<h1>Liste des opérations crédits</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">OperationCredit</h6>
+    </div>
+    <div class="card-body">
+<form method="post" action="{{ path('ajoutOperationCredit') }}" >
+<button>Ajouter un OperationCredit</button>
+</form>
+        <br>
+<table border="1">
+    <tr style="  vertical-align:top ; ">
+    <th>id</th>
+    <th>date_op</th>
+    <th>mont_payer</th>
+    <th>echeance</th>
+    <th>taux_interet</th>
+    <th>solvabilite</th>
+    <th>type_operation</th>
+    <th>Supprimer</th>
+    {#  <th>Modifier</th> #}
+    </tr>
+    <tr {% for c in operationCredit %}>
+        <td>{{ c.id }}</td>
+        <td>{{ c.dateop |date('d-m-Y') }}</td>
+        <td>{{ c.montpayer }}</td>
+        <td>{{ c.echeance |date('d-m-Y') }}</td>
+        <td>{{ c.tauxinteret }}</td>
+        <td>{{ c.solvabilite }}</td>
+        <td>{{ c.typeoperation }}</td>
+        <td><a href="{{ path("suppOperationCredit",{'id':c.id}) }}">Supprimer</a></td>
+        {#<td><a href="https://web-chat.global.assistant.watson.cloud.ibm.com/preview.html?region=eu-de&integrationID=391b1234-9990-430d-b6e3-db9e6576ea3e&serviceInstanceID=d130be5f-214b-4fd3-a600-9d4ad1ae78d1&fbclid=IwAR31LW_UYtdX1MpJNj15JXaYuuoq-R7ZqJh1zO6fD8c6-daqsqmNA8ElpmU">Modifier</a></td>
+ #}
+    </tr {% endfor %}>
+</table>
+            {% endblock %}

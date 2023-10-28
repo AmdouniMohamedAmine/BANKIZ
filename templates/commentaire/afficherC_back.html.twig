@@ -1,0 +1,71 @@
+{% extends 'base_back.html.twig' %}
+{% block title %}Bankiz - Commentaires {% endblock %}
+
+{% block body %}
+
+<h1 class="h3 mb-4 text-gray-800">-Liste des Articles-</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Gestion des Commentaire</h6>
+        </div>
+    <div class="card-body">
+        <table border="2">
+
+
+    <table style="margin-right: 20px ; ">
+    </table>
+            </tr>
+            <td>
+                <td style="vertical-align:top ; ">
+
+                </td>
+            </td>
+            <hr>
+            <td>
+                <div style="width: 100%; overflow: auto">
+                    <table style="border:1px solid black;border-collapse:collapse; vertical-align:center; ">
+                        <tr class="table" style="border:1px solid black;border-collapse:collapse;">
+                            <td >Titre Publication</td>
+                            <td>Nom Client</td>
+                            <td >Description commentaire</td>
+                            <td>Date Commentaire</td>
+                            <td>Publie ou non</td>
+                            <td>Parent</td>
+                        </tr>
+
+    {% for k in formC %}
+            <tr style="border:1px solid black;border-collapse:collapse; vertical-align:center; text-align:center;">
+                <td>{{ k.getIdPublication() }}</td>
+                <td>{{ k.getNomClient() }}</td>
+                <td>{{ k.getDescriptionCommentaire() }}</td>
+                <td>{{ k.getDateCommentaire |date('d-m-Y') }}</td>
+                <td>{{ k.getIsPublished }}</td>
+                <td>{{ k.getParent() }}</td>
+
+                <td>
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                           style="height: 45px; padding: 10px 15px; " href="{{path('supprimerC_back',{'id':k.getId()})}}">Supprimer
+                        </a>
+                </td>
+                <td>
+                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                       style="height: 45px; padding: 10px 15px; " href="{{path('modifierC_back',{'id':k.getId()})}}">Modifier
+                    </a>
+                </td>
+            </tr>
+    {% endfor %}
+                        </tr>
+                    </table>
+                    <tr>
+                        <th><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                               style="height: 45px; padding: 10px 15px; " href="{{ path('ajouterC_back') }}">Ajouter
+                            </a></th>
+                    </tr>
+                </div>
+            </td>
+        </table>
+    </div>
+
+    </div>
+    </div>
+   {% endblock %}
